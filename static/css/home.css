@@ -1,0 +1,37 @@
+div#content_home {
+    position: absolute;
+    top: 80px;
+    left: 110px;
+    right: 110px;
+}
+
+div#homeimg {
+    background: #ffffff;
+    padding: 5px 0 1px 0;
+    text-align: center;
+}
+/*케러셀 크기*/
+#myCarousel {
+    margin: 0 auto;
+    margin-top: 20px;
+    }
+.carousel-control.right, .carousel-control.left{
+    background-image: none;
+}
+.carousel-indicators{
+    margin-bottom: -15px;
+}
+h2{
+ margin-top:40px;
+}
+
+#applist{
+    width: 100%;
+     margin-top: 20px;
+}
+#applist a {
+    color: #ff3366;
+}
+
+
+/*#applist tr{border-bottom: solid 1px black;}*/

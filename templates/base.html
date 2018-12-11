@@ -1,0 +1,53 @@
+<!DOCTYPE html>     <!--HTML5 규약을 준수하는 파일-->
+<html lang="ko">    <!--언어는 한국어로 지정--><!---->
+
+<head>              <!--페이지 타이틀과 css 파일 2개를 연결-->
+<title>{% block title %}Django Web Programming{% endblock %}</title>
+
+{% load staticfiles %}  <!--정적 파일인 css 연결하기 위하여, staticfiles를 로드-->
+<!--스타일시트 css/base.css 작성이 필요함-->
+<link href="https://fonts.googleapis.com/css?family=Sunflower:300" rel="stylesheet">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<link rel="stylesheet" type="text/css" href="{% block stylesheet %}{% static 'css/base.css' %}{% endblock %}"/>
+<link rel="stylesheet" type="text/css" href="{% block extrastyle %}{% endblock %}" />
+
+</head>
+
+<body>              <!--바디 영역은 4 영역(헤더/메뉴/콘텐츠/풋터)으로 구성-->
+
+<div id="header">                   <!--헤더 영역-->
+    <h2 class="maintitle">BANILA CO</h2>
+    <!-- user 객체는 장고 기본 객체이므로 모든 템플릿에서 사용 가능함 -->
+    {% if user.is_active %} <!-- 로그인되면 user.is_active() 함수가 참을 반환-->
+        <h4 class="welcome">환영합니다,
+            <!-- firstof 태그는 뒤에 나오는 인자들 중에서 False 아닌 첫 인자를 선택함 -->
+            <strong>{% firstof user.get_short_name user.get_username %}</strong>님. /
+            <a href="{% url 'password_change' %}">비밀번호 변경</a> /
+            <a href="{% url 'logout' %}">로그아웃</a>
+        </h4>
+    {% else %}
+        <h4 class="welcome">환영합니다, 손님. /
+            <a href="{% url 'login' %}">로그인</a> /
+            <a href="{% url 'register' %}">회원가입</a>
+        </h4>
+    {% endif %}
+    </h4>
+</div>
+
+<div id="menu">                     <!--메뉴 영역-->
+    <li><a href="{% url 'home' %}">HOME</a></li>
+    <li><a href="{% url 'photo:index' %}">ONLINE SHOP</a></li>
+    <li><a href="{% url 'bookmark:index' %}">LINK</a></li>
+    <li><a href="{% url 'blog:index' %}">REVIEW</a></li>
+    <li><a href="{% url 'blog:search' %}">SEARCH</a></li>
+    <li><a href="{% url 'admin:index' %}">MANAGEMENT</a></li>
+</div>
+
+{% block content %}{% endblock %}   <!--블록 태그로 콘텐츠 영역 정의 -->
+
+{% block footer %}{% endblock %}    <!--블록 태그로 풋터 영역 정의-->
+
+</body>
+</html>

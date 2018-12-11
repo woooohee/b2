@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+{% block title %}태그된 게시글 목록{% endblock %}
+{% load staticfiles %}
+{% block extrastyle %}{% static "css/tabular.css" %}{% endblock %}
+{% block content %}
+    <div id="content" style="margin-top:60px">  <!--post_all.html과 동일한 형식-->
+        <h1 class="centered" style="margin-bottom: 20px">'{{ tag.name }}' 태그된 후기 목록</h1>
+        <table id="tbl">
+            <tr>
+                <th>번호</th>
+                <th>제품명</th>
+                <th>제품유형</th>
+                <th>등록일</th>
+                <th>작성자</th>
+            </tr>
+            {% for post in object_list %}
+            <tr>
+                <td>{{ post.id }}</td>
+                <td><a href='{{ post.get_absolute_url }}'>{{ post.title }}</a></td>
+                <td>{{ post.slug }}</td>
+                <td>{{ post.modify_date }}</td>
+                <td>{{ post.description }}</td>
+            </tr>
+            {% endfor %}
+        </table>
+    </div>
+{% endblock %}

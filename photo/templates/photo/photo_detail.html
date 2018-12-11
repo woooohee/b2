@@ -1,0 +1,60 @@
+{% extends "base.html" %}
+
+{% block title %}photo_detail.html{% endblock %}
+
+{% load staticfiles %}
+{% block extrastyle %}{% static "photo/photo.css" %}{% endblock %}
+
+{% block content %}
+<div id="content"  style="margin-top:65px">
+    <h2>{{ object.title }}</h2>
+    <p class="centered">
+        <!--newer_id = {{ object.get_newer_photo.id }} newer_url = {{ object.get_previous_photo.get_absolute_url }}</br>-->
+        <!--object.album = {{ object.album }} object.id = {{ object.id }}</br>-->
+        <!--older_id = {{ object.get_older_photo.id }} older_url = {{ object.get_older_photo.get_absolute_url }} </br>-->
+        {% if object.get_newer_photo %}
+            <a href="{{ object.get_newer_photo.get_absolute_url }}" title="다음 사진">
+                {{ object.get_newer_photo }} «--
+            </a>
+        {% else %}
+            끝 사진
+        {% endif %}
+         &nbsp;&nbsp; | &nbsp;&nbsp;
+        {% if object.get_older_photo %}
+            <a href="{{ object.get_older_photo.get_absolute_url }}" title="이전 사진">
+                --» {{ object.get_older_photo }}
+            </a>
+        {% else %}
+            첫 사진
+        {% endif %}
+    </p>
+    <a href="{{ object.image.url }}">
+        <img class="pic-image"  src="{{ object.image.url }}" />
+    </a>
+    <table class="photo-detail">
+        <tr>
+            <td class="col-left">설명</td>
+            <td class="col-right">
+                {% if object.description %}
+                    <p>{{ object.description|linebreaks }}</p>
+                {% else %}
+                    <p>(blank)</p>
+                {% endif %}
+            </td>
+        </tr>
+        <tr>
+            <td class="col-left">등록 일시</td>
+            <td class="col-right">
+                <p>{{ object.upload_date|date:"Y년 m월 d일 H시 i분" }}</p>
+                <!--https://docs.djangoproject.com/en/dev/ref/templates/builtins/?from=olddocs-->
+            </td>
+        </tr>
+        <tr>
+            <td class="col-left">앨범</td>
+            <td class="col-right">
+                <p><a href="{% url 'photo:album_detail' object.album.id %}">{{ object.album.name }}</a></p>
+            </td>
+        </tr>
+    </table>
+</div>
+{% endblock %}

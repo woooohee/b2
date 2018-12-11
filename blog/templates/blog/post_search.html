@@ -1,0 +1,116 @@
+<!--ch09 작성 시작-->
+{% extends "base.html" %}
+{% block title %}장고 게시글 검색{% endblock %}
+{% load staticfiles %}
+{% block extrastyle %}{% static "css/tabular.css" %}{% endblock %}
+{% block content %}
+<style>
+#my_form table th, #my_form table td{
+    border: solid 1px #eee;
+}
+</style>
+<div id="content" style="margin-top:60px">
+    <!--blog.views.SearchFormView.form_valid() 함수와 함께 보면서 작업하라-->
+    <h1 class="centered" style="margin-bottom: 20px">게시글 검색</h1>
+    <!--form 태그로 폼을 출력, 확인 누르면 POST 방식으로 요청을 동일한 URL로 전송-->
+    <!--CSRF 공격(Cross Site Request Forgery) 출처: http://itstory.tk/entry/CSRF-공격이란-그리고-CSRF-방어-방법 [덕's IT Story]-->
+    <!--csrf-token 태그를 써서 CSRF 공격을 방지-->
+    <form id = "my_form" action="." method="post"> {% csrf_token %}
+        <div  class="centered">
+            <table>
+                <!--form은 뷰가 넘겨준 PostSearchForm을 의미함-->
+                {{ form.as_table }}
+            </table>
+            </br>
+            <input type="submit" value="확인" />
+        </div>
+    </form>
+    <br/><br/>
+    {% if object_list and schWord %}
+        <h2 class="centered" style="margin-bottom: 20px">({{ schWord }})에 대한 통합검색 결과</h2>
+        <table id="tbl" >
+            <tr>
+              <th>번호</th>
+                <th>제품명</th>
+                <th>제품유형</th>
+                <th>등록일</th>
+                <th>작성자</th>
+            </tr>
+            {% for post in object_list %}
+            <tr>
+                <td>{{ post.id }}</td>
+                <td>{{ post.modify_date|date:"Y년 m월 d일" }}</td>
+                <td>
+                    <a href='{{ post.get_absolute_url }}'>
+                        <strong>{{ post.title }}</strong>
+                    </a>
+                </td>
+                <td>{{ post.slug }}</td>
+                <td>{{ post.description }}</td>
+            </tr>
+            {% endfor %}
+        </table>
+    {% elif schWord %}
+        <p class="centered">
+            <strong>
+                ({{ schWord }})에 대한 <i>통합</i>검색 결과가 없습니다!
+            </strong>
+        </p>
+    {% elif schWord|default:"nothing" %}
+        <p class="centered">
+            <strong><i>
+                통합</i>검색어를 입력하세요
+            </strong>
+        </p>
+    {% endif %}
+
+    <br/><br/>
+    {% if object_list_sub and schTitle or schDescription or schContent or schTag %}
+        <h2 class="centered">
+            {% if schTitle|length > 0 %} ({{ schTitle }}) {% endif %}
+            {% if schDescription|length > 0 %} ({{ schDescription }}) {% endif %}
+            {% if schContent|length > 0 %} ({{ schContent }}) {% endif %}
+            {% if schTag|length > 0 %} ({{ schTag }}) {% endif %}
+            에 대한 개별검색 결과</h2>
+        <table id="tbl" style="margin-bottom: 100px">
+            <tr>
+                <th>번호</th>
+                <th>제품명</th>
+                <th>제품유형</th>
+                <th>등록일</th>
+                <th>작성자</th>
+            </tr>
+            {% for post in object_list_sub %}
+            <tr>
+                <td>{{ post.id }}</td>
+                <td>{{ post.modify_date|date:"Y년 m월 d일" }}</td>
+                <td>
+                    <a href='{{ post.get_absolute_url }}'>
+                        <strong>{{ post.title }}</strong>
+                    </a>
+                </td>
+                <td>{{ post.slug }}</td>
+                <td>{{ post.description }}</td>
+            </tr>
+            {% endfor %}
+        </table>
+    {% elif schTitle|default:"nothing" and schDescription|default:"nothing" and schContent|default:"nothing" and schTag|default:"nothing"%}
+    <p class="centered">
+        <strong><i>
+            개별</i>검색어를 입력하세요
+        </strong>
+    </p>
+    {% elif schTitle or schDescription or schContent or schTag %}
+        <p class="centered">
+            <strong>
+                {% if schTitle|length > 0 %} ({{ schTitle }}) {% endif %}
+                {% if schDescription|length > 0 %} ({{ schDescription }}) {% endif %}
+                {% if schContent|length > 0 %} ({{ schContent }}) {% endif %}
+                {% if schTag|length > 0 %} ({{ schTag }}) {% endif %}
+                에 대한 <i>개별</i>검색 결과가 없습니다!
+            </strong>
+        </p>
+    {% endif %}
+</div>
+{% endblock %}
+<!--ch09 작성 종료-->
