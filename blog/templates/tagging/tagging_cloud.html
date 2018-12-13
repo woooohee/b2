@@ -4,6 +4,10 @@
     <meta charset="UTF-8">
     <link rel="stylesheet" type="text/css" href="../../static/tagging/tag.css">
 </head>
+<style>
+    a{text-decoration: none}
+    a:hover{font-weight: bold;}
+</style>
 <body>
 <div id="content">
     <div class="tag-cloud">
@@ -16,9 +20,9 @@
         {% tag_cloud_for_model blog.Post as tags with steps=6 min_count=1 distribution=log %}
         {% for tag in tags %}
         <span class="tag-{{tag.font_size}}">
-            <a href="{% url 'blog:tagged_object_list' tag.name %}" target="_parent" style="text-decoration: none;">
-              {{tag.name}}({{tag.font_size}})
-            </a>
+            <a href="{% url 'blog:tagged_object_list' tag.name %}" target="_parent">
+                {{tag.name}}({{tag.font_size}})
+            </a>&nbsp;
         </span>
         {% endfor %}
     </div>

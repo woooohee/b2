@@ -10,26 +10,76 @@
     font-weight: bold;
 }
 /* Authentication Forms */
-fieldset {
-    border: 1px solid #ccc;
-}
+/*fieldset {*/
+    /*border: 1px solid #ccc;*/
+/*}*/
 .aligned label {
     float: left;
     width: 170px;
     padding: 3px 10px 0 0;
     text-align: right;
 }
-.form-row {
-    padding: 10px;
+
+p, h1, fieldset{margin-top: 25px;}
+/*테이블 모서리 둥글게*/
+table {
+    width: 300px;
+    margin: 0 auto;
+    border-radius: 10px;
+    -moz-border-radius: 10px;
+    -webkit-border-radius: 10px;
+    box-shadow: 0 0 0 1px #666;
+}
+table tr th{
+    padding-top: 10px;
+    height: 35px;
+    text-align: center;
+    /*그라데이션 위에서 아래로*/
+    background-image: -webkit-gradient(linear, left top, left bottom, from(#ffcbe0), to(#ff6b8c));
+}
+td{
+    padding: 7px;
     font-size: 11px;
     border-bottom: 1px solid #eee;
 }
-.submit-row {
-    margin: 5px 0;
-    /*border: 1px solid #ccc;*/
-    /*text-align: right;*/
+/*표의 왼쪽 내용*/
+td.col-left{text-align: left;padding-top: 12px;width: 40%}
+/*표의 오른쪽 내용*/
+td.col-right>input{width: 100%}
+/* 모서리 둥글게*/
+th:first-child{
+    border-radius: 10px 10px 0 0;
+    -moz-border-radius: 10px 10px 0 0;
+    -webkit-border-radius: 10px 10px 0 0;
 }
-.submit-row input {
-    /*margin: 10px;*/
-    /*background: #ffc;*/
+tr:last-child>td:last-child{
+    border-radius: 0 0 10px 0;
+    -moz-border-radius: 0 0 10px 0;
+    -webkit-border-radius: 0 0 10px 0;
+    border-bottom: none;
 }
+tr:last-child>td:first-child{
+    border-radius:0 0 0 10px;
+    -moz-border-radius: 0 0 0 10px;
+    -webkit-border-radius: 0 0 0 10px;
+    border-bottom: none;
+}
+/*버튼 가운데*/
+td.submit-row {
+    margin: 0 auto;
+    text-align: center;
+}
+/*버튼 설정*/
+td.submit-row input, td.submit-row input:active {
+    width: 50%;
+    height: 40px;
+    background-color: #ff3366;
+    border: none;
+    /*버튼 둥글게*/
+    border-radius: 8px;
+    color: white;
+    font-weight: 200; /*글씨 굵기*/
+    font-size: 15px;
+}
+
+.centered{text-align: center;}

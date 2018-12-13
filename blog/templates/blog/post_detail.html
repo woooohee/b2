@@ -1,5 +1,5 @@
 {% extends "base.html" %}
-{% block title %}장고 게시글 보기{% endblock %}
+{% block title %}REVIEW{% endblock %}
 {% load staticfiles %}
 {% block extrastyle %}{% static "css/tabular.css" %}{% endblock %}
 {% block content %}
@@ -24,7 +24,7 @@
             </tr>
             <tr>
                 <td>등록일</td>
-                <td>{{ object.create_date|date:"Y년 F j일" }}</td>
+                <td>{{ object.create_date|date:"Y년 m월 d일 H시 i분" }}</td>
             </tr>
             <!--ch07 추가-->
       <!--tagging 패키지에 정의된 커스텀 태그 사용을 위해 tagging_tags 모듈을 적재-->

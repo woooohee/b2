@@ -21,9 +21,9 @@ urlpatterns = [
 	url(r'^accounts/register/done/$', UserCreateDoneTV.as_view(), name='register_done'),
 
     url(r'^$', HomeView.as_view(), name='home'),
-    url(r'^bookmark/', include('bookmark.urls', namespace='bookmark')),
-    url(r'^blog/', include('blog.urls', namespace='blog')),
-    url(r'^photo/', include('photo.urls', namespace='photo')),          # ch10 3/4
+    url(r'^link/', include('bookmark.urls', namespace='bookmark')),
+    url(r'^review/', include('blog.urls', namespace='blog')),
+    url(r'^online-shop/', include('photo.urls', namespace='photo')),          # ch10 3/4
 
 ] + static(settings.MEDIA_URL, document_root = settings.MEDIA_ROOT)     # ch10 4/4
 # 기존 urlpatterns에 static() 함수가 반환하는 URL 패턴을 추가

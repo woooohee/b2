@@ -1,6 +1,6 @@
 <!--ch09 작성 시작-->
 {% extends "base.html" %}
-{% block title %}장고 게시글 검색{% endblock %}
+{% block title %}SEARCH{% endblock %}
 {% load staticfiles %}
 {% block extrastyle %}{% static "css/tabular.css" %}{% endblock %}
 {% block content %}
@@ -11,13 +11,13 @@
 </style>
 <div id="content" style="margin-top:60px">
     <!--blog.views.SearchFormView.form_valid() 함수와 함께 보면서 작업하라-->
-    <h1 class="centered" style="margin-bottom: 20px">게시글 검색</h1>
+    <h1 class="centered" style="margin-bottom: 20px">후기 검색</h1>
     <!--form 태그로 폼을 출력, 확인 누르면 POST 방식으로 요청을 동일한 URL로 전송-->
     <!--CSRF 공격(Cross Site Request Forgery) 출처: http://itstory.tk/entry/CSRF-공격이란-그리고-CSRF-방어-방법 [덕's IT Story]-->
     <!--csrf-token 태그를 써서 CSRF 공격을 방지-->
     <form id = "my_form" action="." method="post"> {% csrf_token %}
         <div  class="centered">
-            <table>
+            <table style="margin: 0 auto">
                 <!--form은 뷰가 넘겨준 PostSearchForm을 의미함-->
                 {{ form.as_table }}
             </table>

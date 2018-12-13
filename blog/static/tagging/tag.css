@@ -1,10 +1,36 @@
 .tag-cloud {
     width: 100%;
     text-align: center;
+    margin-top: 20px;
+
 }
+
 .tag-1 {font-size: 12px;}
 .tag-2 {font-size: 14px;}
 .tag-3 {font-size: 16px;}
 .tag-4 {font-size: 18px;}
 .tag-5 {font-size: 20px;}
 .tag-6 {font-size: 24px;}
+
+.tag_table{
+    width: 200px;
+    margin: 0 auto;
+    border: solid 1px black;
+}
+.tag_table tr th{
+    padding-top: 12px;
+    padding-bottom: 12px;
+    text-align: center;
+    background: #ff9fcc;
+    color: white;
+    border: solid 1px black;
+}
+.tag_table tr td {
+    padding: 12px;
+    border: solid 1px black;
+    text-decoration: none;
+}
+.tag_table tr td a:hover{
+    font-weight: bold;
+    text-decoration: none;
+}

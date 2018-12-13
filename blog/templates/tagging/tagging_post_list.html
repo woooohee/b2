@@ -1,5 +1,5 @@
 {% extends "base.html" %}
-{% block title %}태그된 게시글 목록{% endblock %}
+{% block title %}REVIEW{% endblock %}
 {% load staticfiles %}
 {% block extrastyle %}{% static "css/tabular.css" %}{% endblock %}
 {% block content %}
@@ -18,7 +18,7 @@
                 <td>{{ post.id }}</td>
                 <td><a href='{{ post.get_absolute_url }}'>{{ post.title }}</a></td>
                 <td>{{ post.slug }}</td>
-                <td>{{ post.modify_date }}</td>
+                <td>{{ post.modify_date|date:"Y년 m월 d일 H시 i분" }}</td>
                 <td>{{ post.description }}</td>
             </tr>
             {% endfor %}

@@ -4,29 +4,36 @@
 {% block extrastyle %}{% static "css/forms.css" %}{% endblock %}
 
 {% block content %}
-<div id="content">
-    <h1>새 회원 가입을 환영합니다.</h1>
+<div id="content" style="margin-top:65px">
+    <h1 class="centered">새로운 회원가입을 환영합니다.</h1>
     <form method="post" action="."> {% csrf_token %}
     {% if form.errors %}
         <p class="error-note">회원 가입에 문제가 생겼네요. 아래 사항을 확인해주세요.
             {{ form.errors }}
         </p>
     {% endif %}
-    <p>회원님에 대해 알려주세요.</p>
+    <p class="centered">다음 정보를 입력해주세요.</p>
     <fieldset class="aligned">
-        <div class="form-row">
-            아이디:          {{ form.username }}
-        </div>
-        <div class="form-row">
-            비밀번호:       {{ form.password1 }}
-        </div>
-        <div class="form-row">
-            비밀번호 확인:  {{ form.password2 }}
-        </div>
+        <table>
+            <tr><th colspan="2">회원가입</th></tr>
+            <tr>
+                <td class="col-left">아이디: </td>
+                <td class="col-right">{{ form.username }}</td>
+            </tr>
+            <tr>
+                <td class="col-left">비밀번호: </td>
+                <td class="col-right">{{ form.password1 }}</td>
+            </tr>
+            <tr>
+                <td class="col-left">비밀번호 확인: </td>
+                <td class="col-right">{{ form.password2 }}</td>
+            </tr>
+            <tr>
+                <td class="submit-row" colspan="2"><input type="submit" value="회원 가입"/></td>
+            </tr>
+        </table>
     </fieldset>
-    <div class="submit-row">
-        <input type="submit" value="회원 가입"/>
-    </div>
+
     <script type="text/javascript">document.getElementById("id_username").focus();</script>
     </form>
 </div>

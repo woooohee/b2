@@ -3,11 +3,11 @@
 {% block title %}photo_detail.html{% endblock %}
 
 {% load staticfiles %}
-{% block extrastyle %}{% static "photo/photo.css" %}{% endblock %}
+{% block extrastyle %}{% static "photo/photo.css %}{% endblock %}
 
 {% block content %}
 <div id="content"  style="margin-top:65px">
-    <h2>{{ object.title }}</h2>
+    <h2 class="centered">{{ object.title }}</h2>
     <p class="centered">
         <!--newer_id = {{ object.get_newer_photo.id }} newer_url = {{ object.get_previous_photo.get_absolute_url }}</br>-->
         <!--object.album = {{ object.album }} object.id = {{ object.id }}</br>-->
@@ -28,9 +28,11 @@
             첫 사진
         {% endif %}
     </p>
-    <a href="{{ object.image.url }}">
-        <img class="pic-image"  src="{{ object.image.url }}" />
-    </a>
+    <div class="pic-image">
+        <a href="{{ object.image.url }}">
+            <img class="pic-image" src="{{ object.image.url }}" />
+        </a>
+    </div>
     <table class="photo-detail">
         <tr>
             <td class="col-left">설명</td>

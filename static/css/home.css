@@ -26,12 +26,22 @@ h2{
 }
 
 #applist{
-    width: 100%;
-     margin-top: 20px;
+    width: 30%;
+    margin:0 auto;
+    margin-top: 20px;
 }
 #applist a {
     color: #ff3366;
 }
 
-
+.centered { text-align: center; }
+.carousel-inner>.item{
+    height: 430px;
+    width: 100%;
+    justify-content: center;
+}
+.carousel-inner>.item>img{
+    height: 430px;
+    margin: 0 auto;
+}
 /*#applist tr{border-bottom: solid 1px black;}*/
