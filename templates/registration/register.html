@@ -4,15 +4,15 @@
 {% block extrastyle %}{% static "css/forms.css" %}{% endblock %}
 
 {% block content %}
-<div id="content" style="margin-top:65px">
-    <h1 class="centered">새로운 회원가입을 환영합니다.</h1>
+<div id="content">
+    <h1 class="centered">새 회원 가입을 환영합니다.</h1>
     <form method="post" action="."> {% csrf_token %}
     {% if form.errors %}
         <p class="error-note">회원 가입에 문제가 생겼네요. 아래 사항을 확인해주세요.
             {{ form.errors }}
         </p>
     {% endif %}
-    <p class="centered">다음 정보를 입력해주세요.</p>
+    <p class="centered">회원님에 대해 알려주세요.</p>
     <fieldset class="aligned">
         <table>
             <tr><th colspan="2">회원가입</th></tr>

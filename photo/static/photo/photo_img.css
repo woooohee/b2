@@ -1,0 +1,78 @@
+/* album_list.html */
+div.album-list {
+    margin: 20px 50px;
+}
+
+div.album-list-photo {
+    float: left;
+    width: 150px;
+    height: 180px;
+}
+
+/* album_detail.html */
+div.album-detail {
+    margin: 30px 10px;
+}
+
+div.album-detail-photo {
+    float: left;
+    width: 220px;
+    height: 220px;
+}
+
+div.album-detail-photo >ul> li {
+    font-size: 10px;
+    font-weight: bold;
+    font-style: italic;
+}
+div.album-detail-photo >ul{
+    padding-left:15px;
+}
+
+/* photo_detail.html */
+
+
+table.photo-detail td.col-left {
+    width: 15%;
+    border-right: 1px solid #ccc;
+    padding-top: 10px;
+}
+
+table.photo-detail ul li {
+    font-weight: bold;
+}
+
+table.photo-detail ul p {
+    font-style: italic;
+}
+
+/* common */
+img.thumbnail:hover{
+    border:3px solid black;
+}
+img.thumbnail {
+    border:3px solid #ccc;
+}
+
+div.clear_float {
+    clear: both;
+}
+
+table.photo-detail {
+    width: 750px;
+    margin: 0 auto;
+    margin-top: 20px;
+    border: 1px solid #ccc;
+}
+
+.pic-image {
+    height: 400px;
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;}
+
+.centered { text-align: center; }
+.col-left { width: 10%; text-align: right;}
+.col-right { width: 90%; text-align: left;}
+

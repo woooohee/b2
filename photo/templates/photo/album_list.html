@@ -1,12 +1,11 @@
 {% extends "base.html" %}
 
-{% block title %}앨범 목록{% endblock %}
+{% block title %}ONLINE SHOP{% endblock %}
 
 {% load staticfiles %}
-{% block extrastyle %}{% static "photo/photo.css" %}{% endblock %}
+{% block extrastyle %}{% static "photo/photo_img.css" %}{% endblock %}
 
 {% block content %}
-
 <div id="content">
 
     {% for album in object_list %} <!--AlbumLV 뷰가 앨범 목록을 object_list로 전달-->
